@@ -1,0 +1,28 @@
+{
+  "name": "modal_forms",
+  "version": "1.0.0",
+  "description": "test task",
+  "main": "source/index.html",
+  "scripts": {
+    "build": "gulp style",
+    "start": "gulp serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mglushakova/modal_forms.git"
+  },
+  "author": "Marina Glushakova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mglushakova/modal_forms/issues"
+  },
+  "homepage": "https://github.com/mglushakova/modal_forms#readme",
+  "devDependencies": {
+    "autoprefixer": "^8.0.0",
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-sass": "^3.1.0"
+  }
+}
