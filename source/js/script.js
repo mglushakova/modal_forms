@@ -43,6 +43,10 @@ for ( let i = 0; i < selectItems.length; i++ ) {
 let textInputs = document.querySelectorAll(".form__input[type='text'], .form__input[type='email']");
 
 for ( let i = 0; i < textInputs.length; i++ ) {
+  if ( event.target.value ) {
+    label.classList.add("form__label--small");
+  }
+  
   textInputs[i].addEventListener("blur", (event) => {
     let label = event.target.parentElement.querySelector(".form__label");
 
