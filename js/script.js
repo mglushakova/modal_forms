@@ -1,12 +1,13 @@
 "use strict";
 
 //Form open
-let popupButton = document.querySelector(".popup");
-let registerBlock = document.querySelector(".register");
-let firstItem = registerBlock.querySelector(".form__item")
-let firstInput = firstItem.querySelector(".form__input") ? firstItem.querySelector(".form__input") : firstItem.querySelector(".form__select");
 
-popupButton.addEventListener("click", (event) => {
+var popupButton = document.querySelector(".popup");
+var registerBlock = document.querySelector(".register");
+var firstItem = registerBlock.querySelector(".form__item");
+var firstInput = firstItem.querySelector(".form__input") ? firstItem.querySelector(".form__input") : firstItem.querySelector(".form__select");
+
+popupButton.addEventListener("click", function (event) {
   event.preventDefault();
 
   registerBlock.classList.add("register--active");
@@ -14,15 +15,15 @@ popupButton.addEventListener("click", (event) => {
 });
 
 //Form close
-let closeButton = document.querySelector(".register__close");
+var closeButton = document.querySelector(".register__close");
 
-closeButton.addEventListener("click", (event) => {
+closeButton.addEventListener("click", function (event) {
   event.preventDefault();
 
   registerBlock.classList.remove("register--active");
 });
 
-window.addEventListener("keydown", (event) => {
+window.addEventListener("keydown", function (event) {
   if (event.keyCode === 27) {
     if (registerBlock.classList.contains("register--active")) {
       registerBlock.classList.remove("register--active");
@@ -31,51 +32,51 @@ window.addEventListener("keydown", (event) => {
 });
 
 //Select focus on item click
-let selectItems = document.querySelectorAll(".form__item--select");
+var selectItems = document.querySelectorAll(".form__item--select");
 
-for ( let i = 0; i < selectItems.length; i++ ) {
-  selectItems[i].addEventListener("click", (event) => {
+for (var i = 0; i < selectItems.length; i++) {
+  selectItems[i].addEventListener("click", function (event) {
     event.target.parentElement.querySelector(".form__select").focus();
   });
 }
 
 //Label position on unempty input
-let textInputs = document.querySelectorAll(".form__input[type='text'], .form__input[type='email']");
+var textInputs = document.querySelectorAll(".form__input[type='text'], .form__input[type='email']");
 
-for ( let i = 0; i < textInputs.length; i++ ) {
-  if ( event.target.value ) {
+for (var _i = 0; _i < textInputs.length; _i++) {
+  if (event.target.value) {
     label.classList.add("form__label--small");
   }
 
-  textInputs[i].addEventListener("blur", (event) => {
-    let label = event.target.parentElement.querySelector(".form__label");
+  textInputs[_i].addEventListener("blur", function (event) {
+    var label = event.target.parentElement.querySelector(".form__label");
 
-    if ( event.target.value ) {
+    if (event.target.value) {
       label.classList.add("form__label--small");
     }
   });
 }
 
 //Form validation
-let form = registerBlock.querySelector(".form");
-let formInputs = form.querySelectorAll(".form__input");
-let formSelects = form.querySelectorAll(".form__select");
+var form = registerBlock.querySelector(".form");
+var formInputs = form.querySelectorAll(".form__input");
+var formSelects = form.querySelectorAll(".form__select");
 
-form.addEventListener("submit", (event) => {
-  let inputValidationResult = validateInputs();
-  let selectValidationResult = validateSelects();
+form.addEventListener("submit", function (event) {
+  var inputValidationResult = validateInputs();
+  var selectValidationResult = validateSelects();
 
-  if ( !( inputValidationResult && selectValidationResult ) ) {
+  if (!(inputValidationResult && selectValidationResult)) {
     event.preventDefault();
 
-    for ( let i = 0; i < formInputs.length; i++ ) {
-      formInputs[i].addEventListener("focusin", (event) => {
+    for (var _i2 = 0; _i2 < formInputs.length; _i2++) {
+      formInputs[_i2].addEventListener("focusin", function (event) {
         validateInputs();
       });
     }
 
-    for ( let i = 0; i < formSelects.length; i++ ) {
-      formSelects[i].addEventListener("focusout", (event) => {
+    for (var _i3 = 0; _i3 < formSelects.length; _i3++) {
+      formSelects[_i3].addEventListener("focusout", function (event) {
         validateSelects();
       });
     }
@@ -83,20 +84,20 @@ form.addEventListener("submit", (event) => {
 });
 
 function validateInputs() {
-  let validationStatus = true;
+  var validationStatus = true;
 
-  for ( let i = 0; i < formInputs.length; i++ ) {
-    let inputType = formInputs[i].getAttribute("type");
-    let formItem = formInputs[i].parentElement;
-    deletePrompt(formInputs[i], formItem);
+  for (var _i4 = 0; _i4 < formInputs.length; _i4++) {
+    var inputType = formInputs[_i4].getAttribute("type");
+    var formItem = formInputs[_i4].parentElement;
+    deletePrompt(formInputs[_i4], formItem);
 
-    if ( formInputs[i].hasAttribute("required") &&  !formInputs[i].value ) {
+    if (formInputs[_i4].hasAttribute("required") && !formInputs[_i4].value) {
       formItem.classList.add("form__item--invalid");
       createPrompt(formItem, "This is required field");
       validationStatus = false;
     }
 
-    if ( formInputs[i].value && inputType == "email" &&  !validateEmail(formInputs[i].value) ) {
+    if (formInputs[_i4].value && inputType == "email" && !validateEmail(formInputs[_i4].value)) {
       formItem.classList.add("form__item--invalid");
       createPrompt(formItem, "Invalid format");
       validationStatus = false;
@@ -109,13 +110,13 @@ function validateInputs() {
 }
 
 function validateSelects() {
-  let validationStatus = true;
+  var validationStatus = true;
 
-  for ( let i = 0; i < formSelects.length; i++ ) {
-    let formItem = formSelects[i].parentElement;
-    deletePrompt(formSelects[i], formItem);
+  for (var _i5 = 0; _i5 < formSelects.length; _i5++) {
+    var formItem = formSelects[_i5].parentElement;
+    deletePrompt(formSelects[_i5], formItem);
 
-    if ( formSelects[i].hasAttribute("required") && !formSelects[i].value ) {
+    if (formSelects[_i5].hasAttribute("required") && !formSelects[_i5].value) {
       formItem.classList.add("form__item--invalid");
       createPrompt(formItem, "This is required field");
 
@@ -129,7 +130,7 @@ function validateSelects() {
 }
 
 function createPrompt(parentObject, message) {
-  let prompt = document.createElement("div");
+  var prompt = document.createElement("div");
   prompt.classList.add("form__prompt");
   prompt.innerText = message;
 
@@ -137,8 +138,8 @@ function createPrompt(parentObject, message) {
 }
 
 function deletePrompt(input, item) {
-  let prompt = item.querySelector(".form__prompt");
-  if ( prompt ) {
+  var prompt = item.querySelector(".form__prompt");
+  if (prompt) {
     item.classList.remove("form__item--invalid");
     item.classList.remove("form__item--valid");
     item.removeChild(prompt);
@@ -146,6 +147,6 @@ function deletePrompt(input, item) {
 }
 
 function validateEmail(email) {
-  let reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return reg.test(email);
 }
