@@ -1,0 +1,102 @@
+.register {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  padding-top: 20px;
+  padding-bottom: 145px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100vw;
+  height: 100vh;
+
+  overflow-y: auto;
+
+  background-color: rgba(#2f2f2f, 0.9);
+}
+
+.register__wrapper {
+  position: relative;
+
+  background-color: #ffffff;
+}
+
+.register__container {
+  padding-left: 20px;
+  padding-right: 26px;
+}
+
+.register__title {
+  margin: 0;
+  padding-top: 43px;
+  padding-left: 20px;
+  padding-right: 50px;
+  padding-bottom: 15px;
+  min-height: 126px;
+
+  font-family: $fontHeader;
+  font-size: 28px;
+  line-height: 32px;
+  color: #ffffff;
+
+  background-image: url("../img/background-mobile.jpg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.register__description {
+  margin: 0;
+  margin-top: 13px;
+  margin-bottom: 20px;
+
+  font-family: $fontText;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.register__policy {
+  margin: 0;
+
+  font-family: $fontText;
+  font-size: 12px;
+  line-height: 18px;
+  color: #666666;
+}
+
+.register__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: rgba(#100f12, 0.2);
+
+  border: none;
+  border-radius: 0;
+
+  &::before,
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 15px;
+    left: 8px;
+
+    width: 17px;
+    height: 2px;
+
+    background-color: #ffffff;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}

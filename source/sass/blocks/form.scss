@@ -1,0 +1,171 @@
+.form {
+  margin-bottom: 36px;
+  padding-right: 9px;
+}
+
+.form__title {
+  margin: 0;
+  margin-bottom: 20px;
+
+  font-family: $fontHeader;
+  font-size: 20px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.form__list {
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 0;
+
+  list-style: none;
+}
+
+.form__item {
+  position: relative;
+
+  margin-bottom: 10px;
+  padding-top: 4px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+  padding-right: 40px;
+
+  border: 3px solid #eaeaea;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &--checkbox {
+    padding: 0;
+
+    border: none;
+  }
+
+  &--down {
+    &::before {
+      content: "";
+
+      position: absolute;
+      right: 15px;
+      top: 20px;
+
+      width: 10px;
+      height: 11px;
+
+      background-image: url("../img/arrow_down.svg");
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 10px 11px;
+    }
+  }
+
+  &--valid {
+    &::after {
+      content: "";
+
+      position: absolute;
+      right: -26px;
+      top: 16px;
+
+      width: 18px;
+      height: 18px;
+
+      background-image: url("../img/icon_valid.svg");
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 18px 18px;
+    }
+  }
+
+  &--invalid {
+    margin-bottom: 15px;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      right: -26px;
+      top: 16px;
+
+      width: 18px;
+      height: 18px;
+
+      background-image: url("../img/icon_invalid.svg");
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 18px 18px;
+    }
+  }
+}
+
+.form__label {
+  display: block;
+
+  font-family: $fontHeader;
+  font-size: 12px;
+  line-height: 19px;
+  color: #adadad;
+
+  &--checkbox {
+    position: relative;
+
+    margin-left: 25px;
+    width: 100%;
+
+    font-family: $fontText;
+    font-size: 12px;
+    line-height: 16px;
+    color: #666666;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: -24px;
+
+      width: 14px;
+      height: 14px;
+
+      border: 2px solid #676767;
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      top: 3px;
+      left: -21px;
+
+      display: none;
+      width: 8px;
+      height: 8px;
+
+      background-image: url("../img/icon_tick.svg");
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 8px 8px;
+    }
+  }
+}
+
+.form__input {
+  padding: 0;
+  width: 100%;
+
+  font-family: $fontText;
+  font-size: 14px;
+  line-height: 22px;
+  color: #333333;
+
+  border: none;
+  
+  &::placeholder {
+    color: #333333;
+  }
+}
+
+.form__checkbox:checked ~ .form__label::after {
+  display: inline;
+}
