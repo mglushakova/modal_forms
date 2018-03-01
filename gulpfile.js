@@ -10,6 +10,7 @@ var server = require("browser-sync").create();
 var minify = require("gulp-csso");
 var imagemin = require("gulp-imagemin");
 var htmlmin = require('gulp-htmlmin');
+var uglify = require('gulp-uglify');
 var run = require("run-sequence");
 var del = require("del");
 var ghpages = require('gh-pages');
@@ -45,13 +46,17 @@ gulp.task("html", function () {
     .pipe(gulp.dest("build"));
 });
 
-gulp.task("script", function () {
+gulp.task("scripts", function () {
   return gulp.src("source/js/**/*.js")
+    .pipe(gulp.dest("build/js"))
     .pipe(babel({
       presets: ['env']
     }))
-    .pipe(gulp.dest("build"));
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest("build/js"));
 });
+
 
 gulp.task("copy", function () {
   return gulp.src([
@@ -74,6 +79,7 @@ gulp.task("build", function (done) {
     "copy",
     "style",
     "html",
+    "scripts",
     done)
   ;
 });
