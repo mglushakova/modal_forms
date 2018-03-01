@@ -58,38 +58,71 @@ let formInputs = form.querySelectorAll(".form__input");
 let formSelects = form.querySelectorAll(".form__select");
 
 form.addEventListener("submit", (event) => {
+  validateInputs();
+  validateSelects();
+
+  if ( !( validateInputs() && validateSelects() ) ) {
+    event.preventDefault();
+  }
+});
+
+for ( let i = 0; i < formInputs.length; i++ ) {
+  formInputs[i].addEventListener("focusout", (event) => {
+    validateInputs();
+  });
+}
+
+for ( let i = 0; i < formSelects.length; i++ ) {
+  formSelects[i].addEventListener("focusout", (event) => {
+    validateSelects();
+  });
+}
+
+function validateInputs() {
+  let validationStatus = true;
+
   for ( let i = 0; i < formInputs.length; i++ ) {
     let inputType = formInputs[i].getAttribute("type");
     let formItem = formInputs[i].closest(".form__item");
     deletePrompt(formInputs[i], formItem);
 
     if ( formInputs[i].hasAttribute("required") &&  !formInputs[i].value ) {
-      event.preventDefault();
-
       formItem.classList.add("form__item--invalid");
       createPrompt(formItem, "This is required field");
+      validationStatus = false;
     }
 
     if ( formInputs[i].value && inputType == "email" &&  !validateEmail(formInputs[i].value) ) {
-      event.preventDefault();
-
       formItem.classList.add("form__item--invalid");
       createPrompt(formItem, "Invalid format");
+      validationStatus = false;
     }
+
+    formItem.classList.add("form__item--valid");
   }
+
+  return validationStatus;
+}
+
+function validateSelects() {
+  let validationStatus = true;
 
   for ( let i = 0; i < formSelects.length; i++ ) {
     let formItem = formSelects[i].closest(".form__item");
     deletePrompt(formSelects[i], formItem);
 
     if ( formSelects[i].hasAttribute("required") && !formSelects[i].value ) {
-      event.preventDefault();
-
       formItem.classList.add("form__item--invalid");
       createPrompt(formItem, "This is required field");
+
+      validationStatus = false;
     }
+
+    formItem.classList.add("form__item--valid");
   }
-});
+
+  return validationStatus;
+}
 
 function createPrompt(parentObject, message) {
   let prompt = document.createElement("div");
@@ -103,6 +136,7 @@ function deletePrompt(input, item) {
   let prompt = item.querySelector(".form__prompt");
   if ( prompt ) {
     item.classList.remove("form__item--invalid");
+    item.classList.remove("form__item--valid");
     item.removeChild(prompt);
   }
 }
