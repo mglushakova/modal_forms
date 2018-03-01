@@ -28,7 +28,7 @@
   padding-top: 23px;
   padding-bottom: 7px;
   padding-left: 10px;
-  padding-right: 40px;
+  padding-right: 10px;
 
   border: 3px solid #eaeaea;
 
@@ -43,6 +43,8 @@
   }
 
   &--select {
+    padding-right: 40px;
+
     &::before {
       content: "";
 
@@ -163,15 +165,14 @@
 
 .form__select {
   margin-left: -4px;
-  
+  width: 100%;
+
   font-size: 14px;
+
+  background-color: transparent;
 
   border: none;
   border-radius: 0;
-
-  option {
-
-  }
 }
 
 .form__input {

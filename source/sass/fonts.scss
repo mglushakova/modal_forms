@@ -4,7 +4,7 @@
   font-display: swap;
   src: url("../fonts/opensans-regular.woff2") format("woff2"),
   url("../fonts/opensans-regular.woff") format("woff"),
-  url("../fonts/opensans-regular.ttf");
+  url("../fonts/opensans-regular.ttf") format("ttf");
 }
 
 @font-face {
@@ -13,7 +13,16 @@
   font-display: swap;
   src: url("../fonts/opensans-bold.woff2") format("woff2"),
   url("../fonts/opensans-bold.woff") format("woff"),
-  url("../fonts/opensans-bold.ttf");
+  url("../fonts/opensans-bold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "OpenSansSemiBold";
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/opensans-semibold.woff2") format("woff2"),
+  url("../fonts/opensans-semibold.woff") format("woff"),
+  url("../fonts/opensans-semibold.ttf") format("ttf");
 }
 
 @font-face {
@@ -22,5 +31,5 @@
   font-display: swap;
   src: url("../fonts/opensans-extrabold.woff2") format("woff2"),
   url("../fonts/opensans-extrabold.woff") format("woff"),
-  url("../fonts/opensans-extrabold.ttf");
+  url("../fonts/opensans-extrabold.ttf") format("ttf");
 }
