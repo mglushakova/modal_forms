@@ -35,7 +35,7 @@ let selectItems = document.querySelectorAll(".form__item--select");
 
 for ( let i = 0; i < selectItems.length; i++ ) {
   selectItems[i].addEventListener("click", (event) => {
-    event.target.closest(".form__item--select").querySelector(".form__select").focus();
+    event.target.parentElement.querySelector(".form__select").focus();
   });
 }
 
