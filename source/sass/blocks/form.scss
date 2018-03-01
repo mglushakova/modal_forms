@@ -176,10 +176,18 @@
 
   font-size: 14px;
 
+  -moz-appearance: none;
+  -webkit-appearance:none;
+
   background-color: transparent;
 
   border: none;
   border-radius: 0;
+}
+
+/*for IE10*/
+.form__select::-ms-expand {
+  display: none;
 }
 
 .form__input {

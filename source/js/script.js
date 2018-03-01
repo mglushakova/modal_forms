@@ -58,32 +58,32 @@ let formInputs = form.querySelectorAll(".form__input");
 let formSelects = form.querySelectorAll(".form__select");
 
 form.addEventListener("submit", (event) => {
-  validateInputs();
-  validateSelects();
+  let inputValidationResult = validateInputs();
+  let selectValidationResult = validateSelects();
 
-  if ( !( validateInputs() && validateSelects() ) ) {
+  if ( !( inputValidationResult && selectValidationResult ) ) {
     event.preventDefault();
+
+    for ( let i = 0; i < formInputs.length; i++ ) {
+      formInputs[i].addEventListener("focusin", (event) => {
+        validateInputs();
+      });
+    }
+
+    for ( let i = 0; i < formSelects.length; i++ ) {
+      formSelects[i].addEventListener("focusout", (event) => {
+        validateSelects();
+      });
+    }
   }
 });
-
-for ( let i = 0; i < formInputs.length; i++ ) {
-  formInputs[i].addEventListener("focusout", (event) => {
-    validateInputs();
-  });
-}
-
-for ( let i = 0; i < formSelects.length; i++ ) {
-  formSelects[i].addEventListener("focusout", (event) => {
-    validateSelects();
-  });
-}
 
 function validateInputs() {
   let validationStatus = true;
 
   for ( let i = 0; i < formInputs.length; i++ ) {
     let inputType = formInputs[i].getAttribute("type");
-    let formItem = formInputs[i].closest(".form__item");
+    let formItem = formInputs[i].parentElement;
     deletePrompt(formInputs[i], formItem);
 
     if ( formInputs[i].hasAttribute("required") &&  !formInputs[i].value ) {
@@ -108,7 +108,7 @@ function validateSelects() {
   let validationStatus = true;
 
   for ( let i = 0; i < formSelects.length; i++ ) {
-    let formItem = formSelects[i].closest(".form__item");
+    let formItem = formSelects[i].parentElement;
     deletePrompt(formSelects[i], formItem);
 
     if ( formSelects[i].hasAttribute("required") && !formSelects[i].value ) {
