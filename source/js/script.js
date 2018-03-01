@@ -43,7 +43,7 @@ for ( let i = 0; i < selectItems.length; i++ ) {
 let textInputs = document.querySelectorAll(".form__input[type='text'], .form__input[type='email']");
 
 for ( let i = 0; i < textInputs.length; i++ ) {
-  if ( event.target.value ) {
+  if ( textInputs[i].value ) {
     label.classList.add("form__label--small");
   }
 
