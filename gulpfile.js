@@ -48,10 +48,10 @@ gulp.task("html", function () {
 
 gulp.task("scripts", function () {
   return gulp.src("source/js/**/*.js")
-    .pipe(gulp.dest("build/js"))
     .pipe(babel({
       presets: ['env']
     }))
+    .pipe(gulp.dest("build/js"))
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest("build/js"));
