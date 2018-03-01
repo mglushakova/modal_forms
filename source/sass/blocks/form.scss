@@ -29,6 +29,7 @@
   padding-bottom: 7px;
   padding-left: 10px;
   padding-right: 10px;
+  width: 100%;
 
   border: 3px solid #eaeaea;
 
@@ -199,4 +200,20 @@
 
 .form__checkbox:checked ~ .form__label::after {
   display: inline;
+}
+
+@media (min-width: $tabletWidth) {
+  .form__item {
+    &--short {
+      max-width: calc(50% - 15px);
+    }
+
+    &--inline {
+      display: inline-block;
+    }
+
+    &--name {
+      margin-right: 25px;
+    }
+  }
 }
