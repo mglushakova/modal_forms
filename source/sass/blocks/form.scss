@@ -206,7 +206,7 @@
 
 .form__prompt {
   position: absolute;
-  left: -5px;
+  left: -3px;
   bottom: -23px;
 
   font-family: "OpenSansBold", "Arial", sans-serif;
@@ -215,8 +215,14 @@
   color: #dd432b;
 }
 
-.form__checkbox:checked ~ .form__label::after {
-  display: inline;
+.form__checkbox {
+  &:checked ~ .form__label::after {
+    display: inline;
+  }
+
+  &:focus ~ .form__label::before {
+    outline: auto;
+  }
 }
 
 @media (min-width: $tabletWidth) {
@@ -330,6 +336,7 @@
   }
 
   .form__prompt {
+    left: -3px;
     bottom: -26px;
 
     font-family: "OpenSansSemiBold", "Arial", sans-serif;

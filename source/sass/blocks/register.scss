@@ -3,6 +3,7 @@
   top: 0;
   left: 0;
 
+  display: none;
   padding-top: 20px;
   padding-bottom: 145px;
   padding-left: 20px;
@@ -13,6 +14,14 @@
   overflow-y: auto;
 
   background-color: rgba(#2f2f2f, 0.9);
+
+  &--active {
+    display: block;
+
+    .register__wrapper {
+      animation: bounce 0.3s;
+    }
+  }
 }
 
 .register__wrapper {
@@ -114,6 +123,16 @@
 
   &::after {
     transform: rotate(-45deg);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(0.3);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
 

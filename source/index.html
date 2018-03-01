@@ -14,7 +14,7 @@
 
       <h1 class="visually-hidden">Open Day Register</h1>
 
-      <button class="button" type="button">Register</button>
+      <a class="button popup" href="register.html">Register</a>
 
       <section class="register">
         <div class="register__wrapper">
@@ -25,19 +25,21 @@
           <div class="register__container">
             <p class="register__description">Open Days are the perfect opportunity to get to know us, visit our campus, see acccommodation, meet academics, and get the low-down on the Essex student life.
             </p>
-            <form class="register__form form" action="register.html" method="post">
+            <form class="register__form form" action="register.html" method="post" novalidate>
               <h3 class="form__title">Book your place</h3>
               <ul class="form__list">
                 <li class="form__item form__item--select">
                   <select class="form__select" name="status" id="status">
+                    <option value="" selected="selected" disabled="disabled">Select education</option>
                     <option value="undergraduate">Undergraduate</option>
                     <option value="graduate">Masters</option>
                     <option value="graduate">Postgraduate</option>
                   </select>
                   <label for="status" class="form__label">I am an</label>
                 </li>
-                <li class="form__item form__item--select form__item--valid">
+                <li class="form__item form__item--select">
                   <select class="form__select" name="campus" id="campus">
+                    <option value="" selected="selected" disabled="disabled">Select campus</option>
                     <option value="undergraduate">Colchester</option>
                     <option value="undergraduate">Southend</option>
                     <option value="graduate">Loughton</option>
@@ -45,7 +47,8 @@
                   <label for="campus" class="form__label">Campus</label>
                 </li>
                 <li class="form__item form__item--select form__item--short">
-                  <select class="form__select" name="date" id="date">
+                  <select class="form__select" name="date" id="date" required>
+                    <option value="" selected="selected" disabled="disabled">Select date</option>
                     <option value="undergraduate">Sat 12th June</option>
                     <option value="undergraduate">Sat 19th June</option>
                     <option value="graduate">Sat 26th June</option>
@@ -60,12 +63,12 @@
                   <input class="form__input" id="last-name" type="text" required>
                   <label for="last-name" class="form__label">Last Name<sup>*</sup></label>
                 </li>
-                <li class="form__item form__item--invalid">
+                <li class="form__item">
                   <input class="form__input" id="email" type="email" required>
                   <label for="email" class="form__label">Email Address<sup>*</sup></label>
                 </li>
                 <li class="form__item form__item--checkbox">
-                  <input class="visually-hidden form__checkbox" id="subscribe" type="checkbox">
+                  <input class="visually-hidden form__checkbox" id="subscribe" type="checkbox" checked>
                   <label for="subscribe" class="form__label form__label--checkbox">I would like to receive email updates from the University</label>
                 </li>
               </ul>
