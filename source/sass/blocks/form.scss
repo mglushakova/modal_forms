@@ -162,6 +162,12 @@
       background-size: 8px 8px;
     }
   }
+
+  &--small {
+    top: 3px;
+
+    font-size: 12px;
+  }
 }
 
 .form__select {
@@ -230,6 +236,8 @@
     margin-bottom: 20px;
     padding-top: 27px;
     padding-bottom: 13px;
+    padding-left: 15px;
+    padding-right: 15px;
 
     &--select {
       &::before {
@@ -297,10 +305,17 @@
         left: -22px;
       }
     }
+
+    &--small {
+      top: 9px;
+      left: 16px;
+
+      font-size: 12px;
+    }
   }
 
   .form__select {
-    margin-left: 0;
+    margin-left: -4px;
 
     font-size: 16px;
   }
