@@ -28,7 +28,7 @@
             <form class="register__form form" action="register.html" method="post">
               <h3 class="form__title">Book your place</h3>
               <ul class="form__list">
-                <li class="form__item form__item--select form__item--valid">
+                <li class="form__item form__item--select">
                   <select class="form__select" name="status" id="status">
                     <option value="undergraduate">Undergraduate</option>
                     <option value="graduate">Masters</option>
@@ -36,7 +36,7 @@
                   </select>
                   <label for="status" class="form__label">I am an</label>
                 </li>
-                <li class="form__item form__item--select">
+                <li class="form__item form__item--select form__item--valid">
                   <select class="form__select" name="campus" id="campus">
                     <option value="undergraduate">Colchester</option>
                     <option value="undergraduate">Southend</option>
@@ -60,7 +60,7 @@
                   <input class="form__input" id="last-name" type="text" required>
                   <label for="last-name" class="form__label">Last Name<sup>*</sup></label>
                 </li>
-                <li class="form__item">
+                <li class="form__item form__item--invalid">
                   <input class="form__input" id="email" type="email" required>
                   <label for="email" class="form__label">Email Address<sup>*</sup></label>
                 </li>
